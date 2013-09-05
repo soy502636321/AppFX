@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 主程序 -->
+	<bean id="application" class="fx.hq.main.ApplicationFX"
+		init-method="launch">
+		<property name="width" value="800" />
+		<property name="height" value="500" />
+		<property name="title" value="短信、邮件发送程序(小胡)" />
+		<property name="pane" ref="mainPane" />
+	</bean>
+
+	<bean id="mainPane" class="fx.hq.ui.MainPane">
+		<property name="top" ref="topBar" />
+		<property name="center" ref="centerAccordion" />
+	</bean>
+
+	<!-- 顶端菜单栏 -->
+	<bean id="topBar" class="fx.hq.ui.top.TopBar">
+		<constructor-arg>
+			<list>
+				<ref bean="fileMenu" />
+				<ref bean="toolMenu" />
+				<ref bean="helpMenu" />
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="centerAccordion" class="fx.hq.ui.center.VarargsAccordion">
+		<constructor-arg>
+			<list>
+				<ref bean="smsTitledPane"/>
+				<ref bean="mailTitledPane"/>
+			</list>
+		</constructor-arg>
+		<property name="expandedPane" ref="smsTitledPane" />
+	</bean>
+	
+	<bean id="smsTitledPane" class="javafx.scene.control.TitledPane">
+		<property name="text" value="短信" />
+		<property name="content" ref="smsTableView" />
+		<property name="expanded" value="true" />
+	</bean>
+	
+	<bean id="smsTableView" class="fx.hq.ui.center.SmsTableView">
+	</bean>
+	
+	<bean id="mailTableView" class="fx.hq.ui.center.MailTableView">
+	</bean>
+	
+	<bean id="mailTitledPane" class="javafx.scene.control.TitledPane">
+		<property name="text" value="邮件" />
+		<property name="content" ref="mailTableView" />
+		<property name="expanded" value="true" />
+	</bean>
+
+	<!-- 文件菜单标签 -->
+	<bean id="fileMenu" class="fx.hq.ui.top.menu.VarargsMenu">
+		<constructor-arg>
+			<list>
+				<ref bean="exitItem" />
+			</list>
+		</constructor-arg>
+		<property name="text" value="文件" />
+	</bean>
+	
+	<bean id="exitItem" class="javafx.scene.control.MenuItem">
+		<property name="text" value="退出" />
+		<property name="onAction" ref="exitEventHandler" />
+	</bean>
+
+	<bean id="toolMenu" class="fx.hq.ui.top.menu.VarargsMenu">
+		<constructor-arg>
+			<list>
+				<ref bean="sendSmsItem"/>
+				<ref bean="sendMailItem"/>
+			</list>
+		</constructor-arg>
+		<property name="text" value="工具" />
+	</bean>
+	<bean id="sendSmsItem" class="javafx.scene.control.MenuItem">
+		<property name="text" value="发送短信" />
+	</bean>
+	<bean id="sendMailItem" class="javafx.scene.control.MenuItem">
+		<property name="text" value="发送邮件" />
+	</bean>
+
+	<!-- 帮助菜单标签 -->
+	<bean id="helpMenu" class="fx.hq.ui.top.menu.VarargsMenu">
+		<constructor-arg>
+			<list>
+				<ref bean="aboutItem"/>
+			</list>
+		</constructor-arg>
+		<property name="text" value="帮助" />
+	</bean>
+	<bean id="aboutItem" class="javafx.scene.control.MenuItem">
+		<property name="text" value="关于程序" />
+	</bean>
+
+	<bean id="exitEventHandler" class="fx.hq.ui.event.ExitEventHandler">
+	</bean>
+</beans>
