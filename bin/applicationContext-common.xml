@@ -31,23 +31,82 @@
 	<bean id="centerAccordion" class="fx.hq.ui.center.VarargsAccordion">
 		<constructor-arg>
 			<list>
-				<ref bean="smsTitledPane"/>
+				<ref bean="sendSmsTitledPane"/>
 				<ref bean="mailTitledPane"/>
 			</list>
 		</constructor-arg>
-		<property name="expandedPane" ref="smsTitledPane" />
+		<property name="expandedPane" ref="sendSmsTitledPane" />
 	</bean>
 	
-	<bean id="smsTitledPane" class="javafx.scene.control.TitledPane">
+	<bean id="sendSmsTitledPane" class="javafx.scene.control.TitledPane">
 		<property name="text" value="短信" />
-		<property name="content" ref="smsTableView" />
+		<property name="content" ref="sendSmsTableView" />
 		<property name="expanded" value="true" />
 	</bean>
 	
-	<bean id="smsTableView" class="fx.hq.ui.center.SmsTableView">
+	<bean id="sendSmsTableView" class="fx.hq.ui.center.SendSmsTableView">
+		<constructor-arg>
+			<list>
+				<ref bean="mobilePhoneColumn"/>
+				<ref bean="contentColumn"/>
+				<ref bean="sendTimeColumn"/>
+				<ref bean="userKeyColumn"/>
+				<ref bean="comEmpIdColumn"/>
+				<ref bean="msgTypeColumn"/>
+				<ref bean="userIdColumn"/>
+				<ref bean="userNameColumn"/>
+				<ref bean="organPidColumn"/>
+				<ref bean="linkManColumn"/>
+			</list>
+		</constructor-arg>
 	</bean>
 	
 	<bean id="mailTableView" class="fx.hq.ui.center.MailTableView">
+	</bean>
+	
+	<bean id="mobilePhoneCell" class="javafx.scene.control.cell.PropertyValueFactory">
+		<constructor-arg index="0" value="mobilePhone" />
+	</bean>
+	
+	<bean id="mobilePhoneColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="手机号码" />
+		<property name="cellValueFactory" ref="mobilePhoneCell" />
+	</bean>
+	
+	<bean id="contentColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="短信内容" />
+	</bean>
+	
+	<bean id="sendTimeColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="发送时间" />
+	</bean>
+	
+	<bean id="userKeyColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="userKey" />
+	</bean>
+	
+	<bean id="comEmpIdColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="comEmpId" />
+	</bean>
+	
+	<bean id="msgTypeColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="短信类型" />
+	</bean>
+	
+	<bean id="userIdColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="userId" />
+	</bean>
+	
+	<bean id="userNameColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="userName" />
+	</bean>
+	
+	<bean id="organPidColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="发送机构" />
+	</bean>
+	
+	<bean id="linkManColumn" class="javafx.scene.control.TableColumn">
+		<property name="text" value="接收人" />
 	</bean>
 	
 	<bean id="mailTitledPane" class="javafx.scene.control.TitledPane">
@@ -70,7 +129,7 @@
 		<property name="text" value="退出" />
 		<property name="onAction" ref="exitEventHandler" />
 	</bean>
-
+	
 	<bean id="toolMenu" class="fx.hq.ui.top.menu.VarargsMenu">
 		<constructor-arg>
 			<list>
