@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="fx.hq.ui.entity.SmsEntity" table="MP_SMSQUEUE">
+    	<id name="taskId" type="java.lang.String">
+    		<column name="TaskID" />
+    		<generator class="native" />
+    	</id>
+    	<property name="mobilePhone" type="java.lang.String">
+    		<column name="MobilePhone" />
+    	</property>
+    	<property name="content" type="java.lang.String">
+    		<column name="Content" />
+    	</property>
+    	<property name="sendTime" type="java.util.Date">
+    		<column name="SendTime" />
+    	</property>
+    	<property name="userKey" type="java.lang.String">
+    		<column name="UserKey" />
+    	</property>
+    	<property name="comEmpId" type="java.lang.String">
+    		<column name="ComEmpId" />
+    	</property>
+    	<property name="msgType" type="java.lang.String">
+    		<column name="MsgType" />
+    	</property>
+    	<property name="userId" type="java.lang.String">
+    		<column name="UserId" />
+    	</property>
+    	<property name="userName" type="java.lang.String">
+    		<column name="UserName" />
+    	</property>
+    	<property name="organPid" type="java.lang.String">
+    		<column name="OrganPid" />
+    	</property>
+    	<property name="linkMan" type="java.lang.String">
+    		<column name="LinkMan" />
+    	</property>
+    </class>
+</hibernate-mapping>

@@ -2,163 +2,55 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-
-	<!-- 主程序 -->
-	<bean id="application" class="fx.hq.main.ApplicationFX"
-		init-method="launch">
-		<property name="width" value="800" />
-		<property name="height" value="500" />
-		<property name="title" value="短信、邮件发送程序(小胡)" />
-		<property name="pane" ref="mainPane" />
-	</bean>
-
-	<bean id="mainPane" class="fx.hq.ui.MainPane">
-		<property name="top" ref="topBar" />
-		<property name="center" ref="centerAccordion" />
-	</bean>
-
-	<!-- 顶端菜单栏 -->
-	<bean id="topBar" class="fx.hq.ui.top.TopBar">
-		<constructor-arg>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
 			<list>
-				<ref bean="fileMenu" />
-				<ref bean="toolMenu" />
-				<ref bean="helpMenu" />
+				<value>classpath:dataSource.properties</value>
+				<value>classpath:sms.properties</value>
 			</list>
-		</constructor-arg>
+		</property>
 	</bean>
-	
-	<bean id="centerAccordion" class="fx.hq.ui.center.VarargsAccordion">
-		<constructor-arg>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url"
+			value="jdbc:sqlserver://192.168.4.12:1433;databaseName=aa">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="huiquan"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
 			<list>
-				<ref bean="sendSmsTitledPane"/>
-				<ref bean="mailTitledPane"/>
+				<value>classpath:fx/hq/ui/entity/</value>
 			</list>
-		</constructor-arg>
-		<property name="expandedPane" ref="sendSmsTitledPane" />
+		</property>
+	</bean>
+	<bean id="smsEntityDAO" class="fx.hq.ui.entity.dao.impl.SmsEntityDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean id="sendSmsTitledPane" class="javafx.scene.control.TitledPane">
-		<property name="text" value="短信" />
-		<property name="content" ref="sendSmsTableView" />
-		<property name="expanded" value="true" />
+	<bean id="baseOrganEntityDAO" class="fx.hq.ui.entity.dao.impl.BaseOrganEntityDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean id="sendSmsTableView" class="fx.hq.ui.center.SendSmsTableView">
-		<constructor-arg>
-			<list>
-				<ref bean="mobilePhoneColumn"/>
-				<ref bean="contentColumn"/>
-				<ref bean="sendTimeColumn"/>
-				<ref bean="userKeyColumn"/>
-				<ref bean="comEmpIdColumn"/>
-				<ref bean="msgTypeColumn"/>
-				<ref bean="userIdColumn"/>
-				<ref bean="userNameColumn"/>
-				<ref bean="organPidColumn"/>
-				<ref bean="linkManColumn"/>
-			</list>
-		</constructor-arg>
+	<bean id="smsLogEntityDAO" class="fx.hq.ui.entity.dao.impl.SmsLogEntityDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean id="mailTableView" class="fx.hq.ui.center.MailTableView">
-	</bean>
-	
-	<bean id="mobilePhoneCell" class="javafx.scene.control.cell.PropertyValueFactory">
-		<constructor-arg index="0" value="mobilePhone" />
-	</bean>
-	
-	<bean id="mobilePhoneColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="手机号码" />
-		<property name="cellValueFactory" ref="mobilePhoneCell" />
-	</bean>
-	
-	<bean id="contentColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="短信内容" />
-	</bean>
-	
-	<bean id="sendTimeColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="发送时间" />
-	</bean>
-	
-	<bean id="userKeyColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="userKey" />
-	</bean>
-	
-	<bean id="comEmpIdColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="comEmpId" />
-	</bean>
-	
-	<bean id="msgTypeColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="短信类型" />
-	</bean>
-	
-	<bean id="userIdColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="userId" />
-	</bean>
-	
-	<bean id="userNameColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="userName" />
-	</bean>
-	
-	<bean id="organPidColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="发送机构" />
-	</bean>
-	
-	<bean id="linkManColumn" class="javafx.scene.control.TableColumn">
-		<property name="text" value="接收人" />
-	</bean>
-	
-	<bean id="mailTitledPane" class="javafx.scene.control.TitledPane">
-		<property name="text" value="邮件" />
-		<property name="content" ref="mailTableView" />
-		<property name="expanded" value="true" />
-	</bean>
-
-	<!-- 文件菜单标签 -->
-	<bean id="fileMenu" class="fx.hq.ui.top.menu.VarargsMenu">
-		<constructor-arg>
-			<list>
-				<ref bean="exitItem" />
-			</list>
-		</constructor-arg>
-		<property name="text" value="文件" />
-	</bean>
-	
-	<bean id="exitItem" class="javafx.scene.control.MenuItem">
-		<property name="text" value="退出" />
-		<property name="onAction" ref="exitEventHandler" />
-	</bean>
-	
-	<bean id="toolMenu" class="fx.hq.ui.top.menu.VarargsMenu">
-		<constructor-arg>
-			<list>
-				<ref bean="sendSmsItem"/>
-				<ref bean="sendMailItem"/>
-			</list>
-		</constructor-arg>
-		<property name="text" value="工具" />
-	</bean>
-	<bean id="sendSmsItem" class="javafx.scene.control.MenuItem">
-		<property name="text" value="发送短信" />
-	</bean>
-	<bean id="sendMailItem" class="javafx.scene.control.MenuItem">
-		<property name="text" value="发送邮件" />
-	</bean>
-
-	<!-- 帮助菜单标签 -->
-	<bean id="helpMenu" class="fx.hq.ui.top.menu.VarargsMenu">
-		<constructor-arg>
-			<list>
-				<ref bean="aboutItem"/>
-			</list>
-		</constructor-arg>
-		<property name="text" value="帮助" />
-	</bean>
-	<bean id="aboutItem" class="javafx.scene.control.MenuItem">
-		<property name="text" value="关于程序" />
-	</bean>
-
-	<bean id="exitEventHandler" class="fx.hq.ui.event.ExitEventHandler">
+	<bean id="recvSmsDAO" class="fx.hq.ui.entity.dao.impl.RecvSmsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>

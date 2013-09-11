@@ -10,12 +10,8 @@ public class SendSmsTableView extends TableView<SmsEntity> {
 	public SendSmsTableView() {
 	}
 	
-	public SendSmsTableView(TableColumn... tableColumns) {
+	public SendSmsTableView(TableColumn<SmsEntity, String>... tableColumns) {
 		this.getColumns().addAll(tableColumns);
-		SmsEntity entity = new SmsEntity();
-		entity.setMobilePhone("234324");
-		ObservableList<SmsEntity> smsEntities = FXCollections.observableArrayList(entity);
-		this.getItems().addAll(smsEntities);
 		this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	}
 }

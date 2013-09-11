@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="fx.hq.ui.entity.RecvSms" table="MP_RECVSMS">
+
+		<id name="recID" type="java.lang.Integer">
+			<column name="RecID" />
+		</id>
+		<property name="smsContent" type="java.lang.String">
+			<column name="SmsContent" />
+		</property>
+
+		<property name="smsTime" type="java.util.Date">
+			<column name="SmsTime" />
+		</property>
+
+		<property name="SmsCaller" type="java.lang.String">
+			<column name="SmsCaller" />
+		</property>
+
+		<property name="ReaderAgentID" type="java.lang.String">
+			<column name="ReaderAgentID" />
+		</property>
+		
+		<property name="organSms" type="java.lang.String">
+			<column name="ORGAN_SMS" />
+		</property>
+	</class>
+</hibernate-mapping>

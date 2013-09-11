@@ -11,5 +11,26 @@
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.asm-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.expression-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/c3p0-0.9.2.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.jdbc-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.orm-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.transaction-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/mchange-commons-java-0.2.3.4.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/slf4j-log4j12-1.5.8.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/com.springsource.org.apache.log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/com.springsource.org.apache.commons.pool-1.5.3.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/quartz-all-1.8.6.jar"/>
+	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/smsSDK.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

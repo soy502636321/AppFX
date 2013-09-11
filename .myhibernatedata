@@ -1,0 +1,24 @@
+#MyEclipse Hibernate Properties
+#Mon Sep 09 15:10:43 CST 2013
+sessionFactoryName=fx.hq.ui.entity.dao.impl.HibernateSessionFactory
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.1
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=lib
+addLibs2Project=false
+genVersionTag=false
+sessionFactoryId=sessionFactory
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/AppFX/src/applicationContext-ui.xml
+createConfigFile=false
+addLibs2Classpath=false
