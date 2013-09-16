@@ -29,9 +29,19 @@
 		<property name="common" value="${sms.jh.common}" />
 	</bean>
 	
+	<bean id="defaultSmsSender" class="fx.hq.sms.SmsSender">
+		<property name="strHost" value="${sms.strHost}" />
+		<property name="iCorpID" value="${sms.iCorpID}" />
+		<property name="strLoginName" value="${sms.default.strLoginName}" />
+		<property name="strPasswd" value="${sms.default.strPasswd}" />
+		<property name="iTimeOut" value="${sms.iTimeOut}" />
+		<property name="common" value="${sms.default.common}" />		
+	</bean>
+	
 	<bean id="smsUtil" class="fx.hq.sms.SmsUtil">
 		<property name="scSmsSender" ref="scSmsSender" />
 		<property name="jhSmsSender" ref="jhSmsSender" />
 		<property name="rlSmsSender" ref="rlSmsSender" />
+		<property name="defaultSmsSender" ref="defaultSmsSender" />
 	</bean>
 </beans>

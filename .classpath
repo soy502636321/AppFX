@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="lib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_45"/>
 	<classpathentry kind="lib" path="C:/Program Files/Oracle/JavaFX 2.2 SDK/rt/lib/jfxrt.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.context.support-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/org.springframework.core-3.0.5.RELEASE.jar"/>
@@ -32,5 +31,6 @@
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/hqmis/WebRoot/WEB-INF/lib/quartz-all-1.8.6.jar"/>
 	<classpathentry kind="lib" path="F:/Workspaces/AppFX/lib/smsSDK.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_40"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

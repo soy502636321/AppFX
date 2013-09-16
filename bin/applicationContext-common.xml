@@ -32,9 +32,12 @@
 				</prop>
 			</props>
 		</property>
-		<property name="mappingDirectoryLocations">
+		<property name="mappingResources">
 			<list>
-				<value>classpath:fx/hq/ui/entity/</value>
+				<value>fx/hq/ui/entity/BaseOrganEntity.hbm.xml</value>
+				<value>fx/hq/ui/entity/RecvSms.hbm.xml</value>
+				<value>fx/hq/ui/entity/SmsEntity.hbm.xml</value>
+				<value>fx/hq/ui/entity/SmsLogEntity.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -22,14 +22,14 @@ import fx.hq.ui.entity.dao.SmsLogEntityDAO;
 public class BeanFactory {
 	private static final String SPRING_CONFIG_NAME = "applicationContext-*.xml";
 	private static ApplicationContext context;
-	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HHÊ±mm·ÖssÃë");
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HHæ—¶mmåˆ†ssç§’");
 	
 	private BeanFactory() {
 	}
 	
 	public static ApplicationContext getApplicationContext() {
 		if (context == null) {
-			context = new ClassPathXmlApplicationContext(SPRING_CONFIG_NAME);
+			context = new ClassPathXmlApplicationContext("applicationContext-common.xml", "applicationContext-sms.xml", "applicationContext-task.xml", "applicationContext-ui.xml");
 		}
 		return context;
 	}

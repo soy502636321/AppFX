@@ -6,8 +6,7 @@ public class ReceiveSmsTask {
 	private SmsUtil smsUtil;
 
 	public void run() {
-		// System.out.println("接受短信");
-		System.out.println("接受线程：" + Thread.currentThread().getName());
+		//鎺ュ彈鐭俊
 		getSmsUtil().receive();
 	}
 

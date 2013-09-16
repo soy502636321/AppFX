@@ -18,33 +18,27 @@ public class SmsSender {
 	
 	private String common;
 
-	public static void main(String[] args) {
-		smsSDK smsSDK = new smsSDK();
-		int i = smsSDK.Sms_Connect("www.mobset.com", 112356, "jh", "185119", 30);
-		System.out.println(i);
-	}
-
 	public int connect() {
 		int i = getSmsSDK().Sms_Connect(strHost, iCorpID, strLoginName,
 				strPasswd, iTimeOut);
 		switch(i) {
 			case 0: 
-				BeanFactory.debug(getCommon() + "µ«¬º≥…π¶");
+				BeanFactory.debug(getCommon() + "ÂàùÂßãÂåñÊàêÂäü");
 				break;
 			case -1:
-				BeanFactory.debug(getCommon() + "¡¨Ω”∑˛ŒÒ∆˜ ß∞‹");
+				BeanFactory.debug(getCommon() + "ËøûÊé•ÊúçÂä°Âô®Â§±Ë¥•");
 				break;
 			case -2:
-				BeanFactory.debug(getCommon() + "µ«¬º≥¨ ±");
+				BeanFactory.debug(getCommon() + "ÁôªÂΩïË∂ÖÊó∂");
 				break;
 			case -3:
-				BeanFactory.debug(getCommon() + "µ«¬º ß∞‹£¨’ ∫≈”–ŒÛ");
+				BeanFactory.debug(getCommon() + "ÁôªÂΩïÂ§±Ë¥•ÔºåÂ∏êÂè∑ÊúâËØØ");
 				break;
 			case -4:
-				BeanFactory.debug(getCommon() + "µ«¬º ß∞‹£¨œ‡Õ¨’ ∫≈“—‘⁄±¥¶µ«¬º");
+				BeanFactory.debug(getCommon() + "ÁôªÂΩïÂ§±Ë¥•ÔºåÁõ∏ÂêåÂ∏êÂè∑Â∑≤Âú®Âà´Â§ÑÁôªÂΩï");
 				break;
 			case -5:
-				BeanFactory.debug(getCommon() + "µ«¬º ß∞‹£¨’ ∫≈π˝”⁄∆µ∑±µ«¬º£¨«Î…‘∫Û‘Ÿ ‘");
+				BeanFactory.debug(getCommon() + "ÁôªÂΩïÂ§±Ë¥•ÔºåÂ∏êÂè∑Ëøá‰∫éÈ¢ëÁπÅÁôªÂΩïÔºåËØ∑Á®çÂêéÂÜçËØï");
 				break;
 		}
 		return i;
@@ -53,21 +47,21 @@ public class SmsSender {
 	public int send(SendMsg[] sendMsg, int iSendCount) {
 		int i = getSmsSDK().Sms_Send(sendMsg, iSendCount);
 		if (i >= 0) {
-			BeanFactory.debug(getCommon() + "Ã·Ωª∂Ã–≈£¨◊‹ ˝¡ø£∫" + iSendCount);
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅÊàêÂäü„Äê" + iSendCount + "„Äë");
 			postProcessing(sendMsg);
 		} else if (i == -1) {
-			BeanFactory.debug(getCommon() + "ªπŒ¥≥ı ºªØ£°");
+			BeanFactory.debug(getCommon() + "Êé•Âè£Êú™ÂàùÂßãÂåñ");
 			connect();
 		} else if (i == -2) {
-			BeanFactory.debug(getCommon() + "∑¢ÀÕ≥¨ ±£°");
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅË∂ÖÊó∂");
 		} else if (i == -3) {
-			BeanFactory.debug(getCommon() + "ÀÕ ß∞‹£¨ø…ƒ‹ «’ ∫≈π˝∆⁄ªÚ”‡∂Ó≤ª◊„£°");
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅÂ§±Ë¥•ÔºåÂèØËÉΩÊòØÂ∏êÂè∑ËøáÊúüÊàñ‰ΩôÈ¢ù‰∏çË∂≥");
 		} else if (i == -4) {
-			BeanFactory.debug(getCommon() + "∑¢ÀÕ ß∞‹£¨∑¢ÀÕµƒ–≈œ¢ƒ⁄»›÷–∫¨”–√Ù∏–πÿº¸◊÷£¨Ω˚÷π∑¢ÀÕ£°");
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅÂ§±Ë¥•ÔºåÂèëÈÄÅÁöÑ‰ø°ÊÅØÂÜÖÂÆπ‰∏≠Âê´ÊúâÊïèÊÑüÂÖ≥ÈîÆÂ≠óÔºåÁ¶ÅÊ≠¢ÂèëÈÄÅ");
 		} else if (i == -5) {
-			BeanFactory.debug(getCommon() + "∑¢ÀÕ ß∞‹£¨∑¢ÀÕµƒƒø±Í∫≈¬ÎŒ™∫⁄√˚µ•”√ªß£¨Ω˚÷π∑¢ÀÕ£°");
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅÂ§±Ë¥•ÔºåÂèëÈÄÅÁöÑÁõÆÊ†áÂè∑Á†Å‰∏∫ÈªëÂêçÂçïÁî®Êà∑ÔºåÁ¶ÅÊ≠¢ÂèëÈÄÅ");
 		} else {
-			BeanFactory.debug(getCommon() + "∑¢ÀÕ ß∞‹£¨¥ÌŒÛ¥˙¬Î[" + i + "]");
+			BeanFactory.debug(getCommon() + "ÂèëÈÄÅÂ§±Ë¥•„Äê" + i + "„Äë");
 		}
 		return i;
 	}
@@ -79,16 +73,11 @@ public class SmsSender {
 	public void postProcessing(SendMsg[] sendMsg) {
 		if (sendMsg != null && sendMsg.length > 0) {
 			for (SendMsg msg : sendMsg) {
-				System.out.println("1");
 				SmsEntity entity = BeanFactory.getSmsEntityDAO().delete(msg.taskId);
 				int result = getStatus(msg.iSmsID);
-				System.out.println(2);
 				entity.setComEmpId(msg.userKey);
-				System.out.println(3);
 				BeanFactory.getSmsLogEntityDAO().save(entity, result);
-				System.out.println(4);
 				
-				System.out.println("‘ˆº”µΩ±Ì∏Òœ‘ æ");
 				SendSmsTableView sendSmsTableView = (SendSmsTableView) BeanFactory.getApplicationContext().getBean("sendSmsTableView");
 				sendSmsTableView.getItems().add(entity);
 			}

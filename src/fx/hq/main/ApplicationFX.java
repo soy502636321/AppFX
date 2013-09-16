@@ -1,4 +1,4 @@
-package fx.hq.main;
+ï»¿package fx.hq.main;
 
 import org.springframework.context.annotation.Bean;
 
@@ -19,7 +19,7 @@ public class ApplicationFX extends Application {
 	private static Scene scene;
 	private static double width;
 	private static double height;
-	private static String title = "Ä¬ÈÏµÄ±êÌâ";
+	private static String title = "Ä¬ï¿½ÏµÄ±ï¿½ï¿½ï¿½";
 	private static BorderPane pane = new MainPane();
 	private static SmsEntityDAO smsEntityDAO;
 
@@ -29,7 +29,7 @@ public class ApplicationFX extends Application {
 		stage.setScene(getScene());
 		stage.setTitle(getTitle());
 		stage.getIcons().add(new Image("2013090601414683_easyicon_net_24.png"));
-		// ´°¿Ú¹Ø±ÕÊÂ¼þ£¬µ±¹Ø±Õ³ÌÐòµÄÖ®ºóÍ£Ö¹·¢ËÍ¡¢½ÓÊÕ¶ÌÐÅÈÎÎñ
+		// ï¿½ï¿½ï¿½Ú¹Ø±ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ³ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½ï¿½Õ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
 			@Override
@@ -40,13 +40,15 @@ public class ApplicationFX extends Application {
 						.getApplicationContext().getBean("rlSmsSender");
 				SmsSender jhSmsSender = (SmsSender) BeanFactory
 						.getApplicationContext().getBean("jhSmsSender");
+				SmsSender defaultSmsSender = (SmsSender) BeanFactory.getApplicationContext().getBean("defaultSmsSender");
 				scSmsSender.disConnect();
 				rlSmsSender.disConnect();
 				jhSmsSender.disConnect();
+				defaultSmsSender.disConnect();
 				BeanFactory.shutDown();
 			}
 		});
-		// ³ÌÐò¿ªÊ¼Ê±¼ä£¬³õÊ¼»¯·¢ËÍ¶ÔÏó
+		// ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½ä£¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
 		stage.setOnShown(new EventHandler<WindowEvent>() {
 
 			@Override
@@ -57,9 +59,11 @@ public class ApplicationFX extends Application {
 						.getApplicationContext().getBean("rlSmsSender");
 				SmsSender jhSmsSender = (SmsSender) BeanFactory
 						.getApplicationContext().getBean("jhSmsSender");
+				SmsSender defaultSmsSender = (SmsSender) BeanFactory.getApplicationContext().getBean("defaultSmsSender");
 				scSmsSender.connect();
 				rlSmsSender.connect();
 				jhSmsSender.connect();
+				defaultSmsSender.connect();
 			}
 		});
 		stage.show();

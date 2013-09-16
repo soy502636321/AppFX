@@ -40,7 +40,7 @@ public class SmsUtil {
 					defaultMsgs.add(entity.createMsg("default"));
 				}
 			}
-			BeanFactory.debug("·¢ËÍ¶ÌĞÅ:ÈËÁ¦[" + rlMsgs.size() + "]£¬ÊĞ³¡[" + scMsgs.size() + "]£¬¼Æ»®[" + jhMsgs.size() + "]£¬Ä¬ÈÏ[" + defaultMsgs.size() + "]");
+			BeanFactory.debug("å‘é€çŸ­ä¿¡:äººåŠ›[" + rlMsgs.size() + "]å¸‚åœº[" + scMsgs.size() + "]è®¡åˆ’[" + jhMsgs.size() + "]é»˜è®¤[" + defaultMsgs.size() + "]");
 			if (scMsgs.size() > 0) {
 				SendMsg[] sendMsgs = new SendMsg[scMsgs.size()];
 				scMsgs.toArray(sendMsgs);
@@ -70,7 +70,7 @@ public class SmsUtil {
 		ReceiveMsg scMsg = new ReceiveMsg();
 		int scCount = getScSmsSender().receive(scMsg);
 		if (scCount >= 0) {
-			BeanFactory.debug("ÊĞ³¡ÊÕµ½¶ÌĞÅ");
+			BeanFactory.debug("å¸‚åœºæ¥å—åˆ°çŸ­ä¿¡");
 			RecvSms recvSms = new RecvSms(scMsg.iLogID, scMsg.strMsg, new Date(), scMsg.strSendNum, null, "sc");
 			recvSmsDAO.save(recvSms);
 			ReceiveSmsTableView receiveSmsTableView = BeanFactory.getReceiveSmsTableView();
@@ -80,7 +80,7 @@ public class SmsUtil {
 		ReceiveMsg rlMsg = new ReceiveMsg();
 		int rlCount = getRlSmsSender().receive(rlMsg);
 		if (rlCount >= 0) {
-			BeanFactory.debug("ÈËÁ¦ÊÕµ½¶ÌĞÅ");
+			BeanFactory.debug("äººåŠ›æ¥å—åˆ°çŸ­ä¿¡");
 			RecvSms recvSms = new RecvSms(rlMsg.iLogID, rlMsg.strMsg, new Date(), rlMsg.strSendNum, null, "rl");
 			recvSmsDAO.save(recvSms);
 			ReceiveSmsTableView receiveSmsTableView = BeanFactory.getReceiveSmsTableView();
@@ -90,13 +90,21 @@ public class SmsUtil {
 		ReceiveMsg jhMsg = new ReceiveMsg();
 		int jhCount = getJhSmsSender().receive(jhMsg);
 		if (jhCount >= 0) {
-			BeanFactory.debug("¼Æ»®ÊÕµ½¶ÌĞÅ");
+			BeanFactory.debug("è®¡åˆ’æ¥å—åˆ°çŸ­ä¿¡");
 			RecvSms recvSms = new RecvSms(jhMsg.iLogID, jhMsg.strMsg, new Date(), jhMsg.strSendNum, null, "jh");
 			recvSmsDAO.save(recvSms);
 			ReceiveSmsTableView receiveSmsTableView = BeanFactory.getReceiveSmsTableView();
 			receiveSmsTableView.getItems().add(recvSms);
 		}
-		
+		ReceiveMsg defaultMsg = new ReceiveMsg();
+		int defaultCount = getDefaultSmsSender().receive(defaultMsg);
+		if (defaultCount >= 0) {
+			BeanFactory.debug("é»˜è®¤å¸å·æ¥æ”¶åˆ°çŸ­ä¿¡");
+			RecvSms recvSms = new RecvSms(defaultMsg.iLogID, defaultMsg.strMsg, new Date(), defaultMsg.strSendNum, null, "");
+			recvSmsDAO.save(recvSms);
+			ReceiveSmsTableView receiveSmsTableView = BeanFactory.getReceiveSmsTableView();
+			receiveSmsTableView.getItems().add(recvSms);
+		}
 	}
 
 	public SmsSender getScSmsSender() {

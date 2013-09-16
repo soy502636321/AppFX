@@ -17,78 +17,12 @@ public class SmsTask {
 	private SmsUtil smsUtil;
 	
 	public void run() {
+		//è·å¾—å‘é€çš„çŸ­ä¿¡é›†åˆ
 		List<SmsEntity> entities = BeanFactory.getSmsEntityDAO().findSmsEntities();
-		//»ñµÃ·¢ËÍ¼¯ºÏ
-//		System.out.println("·¢ËÍÊıÁ¿:" + entities.size());
-//		System.out.println("ÈÎÎñÏß³Ì:" + Thread.currentThread().getName());
-//		System.out.println("SDK¶ÔÏó-SC:" + getSmsUtil().getScSmsSender());
-//		System.out.println("SDK¶ÔÏó-JH:" + getSmsUtil().getJhSmsSender());
-//		System.out.println("SDK¶ÔÏó-RL:" + getSmsUtil().getRlSmsSender());
-		//·¢ËÍ
+		//è°ƒç”¨æ¥å£å‘é€
 		if (entities != null && entities.size() > 0) {
 			getSmsUtil().send(entities);
 		}
-		System.out.println("²éÑ¯·¢ËÍ");
-//		SmsSender scSmsSender = (SmsSender) BeanFactory
-//				.getApplicationContext().getBean("scSmsSender");
-//		SmsSender rlSmsSender = (SmsSender) BeanFactory
-//				.getApplicationContext().getBean("rlSmsSender");
-//		SmsSender jhSmsSender = (SmsSender) BeanFactory
-//				.getApplicationContext().getBean("jhSmsSender");
-//		scSmsSender.connect();
-//		rlSmsSender.connect();
-//		jhSmsSender.connect();
-//		System.out.println("µ±Ç°Ö÷Ïß³Ì:" + Thread.currentThread().getName());
-//		System.out.println("--SC:" + scSmsSender.getSmsSDK());
-//		System.out.println("--RL:" + rlSmsSender.getSmsSDK());
-//		System.out.println("--JH:" + jhSmsSender.getSmsSDK());
-//		while (true) {
-//			try {
-//				Thread.currentThread().sleep(5000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.println("Æô¶¯Ò»´Î");
-//			int i = getSmsUtil().getScSmsSender().getStatus(80431);
-//			System.out.println("²éÑ¯×´Ì¬:" + i);
-//		}
-//		
-//		smsSDK sdk = new smsSDK();
-//		int i = sdk.Sms_Connect("www.mobset.com", 112356, "sc", "156832", 30);
-//		System.out.println("µÇÂ¼×´Ì¬:" + i);
-//		
-//		while (true) {
-//		int result = sdk.Sms_Status(80431);
-//			if (result == -1) {
-//				sdk.Sms_Connect("www.mobset.com", 112356, "sc", "156832", 30);
-//				result = sdk.Sms_Status(80431);
-//			}
-//			System.out.println(result);
-//		try {
-//			Thread.currentThread().sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//		str_SendMsg sendMsg = new str_SendMsg();
-//		sendMsg.strMobile = "15976812172";
-//		sendMsg.strMsg = "²âÊÔ²é¿´×´Ì¬ !!";
-//		str_SendMsg[] sendMsgs = new str_SendMsg[] {
-//			sendMsg
-//		};
-//		int result = sdk.Sms_Send(sendMsgs, 1);
-//		System.out.println("µÚÒ»´Î·¢ËÍ×´Ì¬:" + result);
-//		
-//		sendMsg = new str_SendMsg();
-//		sendMsg.strMobile = "13580500449";
-//		sendMsg.strMsg = "Í¬Ê±·¢ËÍ";
-//		sendMsgs = new str_SendMsg[] {
-//				sendMsg
-//		};
-//		int i = sdk.Sms_Send(sendMsgs, 1);
-//		System.out.println("µÚ¶ş´Î·¢ËÍ×´Ì¬:" + i);
 	}
 
 	public SmsUtil getSmsUtil() {
